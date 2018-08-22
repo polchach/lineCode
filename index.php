@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("Asia/Bangkok");
+
 
 require_once('class/class.lineAPI.php');
 $line = new lineAPI();
@@ -33,22 +35,22 @@ if(sizeof($array_message)==2){
 		
 		case 'login':
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ" 
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
 		break;
 		
 		case 'logout':
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ"
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ";
 		break;
 		
 		case 'acw':
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพักการใช้งานชั่วขณะแล้วค่ะ"
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพักการใช้งานชั่วขณะแล้วค่ะ";
 		break;
 		
 		case 'dnd':
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพักการใช้งานแล้วค่ะ"
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพักการใช้งานแล้วค่ะ";
 		break;
 	}
 
@@ -64,11 +66,9 @@ else{
     }
     else{
 		//$res = $line -> userState($userId);
-		date_default_timezone_set("Asia/Bangkok");
-
-		$date_time = date("d/m/Y H:i:s");
+		
 		$res = '0';
-	
+			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
 			$pic = $results['pictureUrl'];
 			
