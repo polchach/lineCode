@@ -4,8 +4,6 @@ date_default_timezone_set("Asia/Bangkok");
 require_once('class/class.lineAPI.php');
 $line = new lineAPI();
 
-$date_time = date("d/m/Y H:i:s");
-
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
  
@@ -67,6 +65,7 @@ else{
     }
     else{
 		//$res = $line -> userState($userId);
+		$date_time = date("d/m/Y H:i:s");
 		$res = '0';
 	
 			$name = $results['displayName'];
