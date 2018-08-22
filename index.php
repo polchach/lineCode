@@ -8,13 +8,13 @@ $line = new lineAPI();
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
  
-$array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
+
 $arrPostData = array();
 $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 
 $userId = $arrJson['events'][0]['source']['userId'];
 $messageId = $arrJson['events'][0]['message']['id'];
-
+$array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
 if(sizeof($array_message)==2){
 	$role = '';
 	$name = $line -> createAgentProfile($userId,$role);
@@ -179,7 +179,8 @@ else{
 			}
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
-			$arrPushData = array("to"=>"U3ff18f16e94a80b192dd89eaaa8b7846","messages"=>$messages);
+			$to = array("Uef43a26cff64ac0a608c9acf9d0f70cd","U93a99a19a48ec6a47a06145847dc43b0");	
+			$arrPushData = array("to"=>$to,"messages"=>$messages);
 			$line->Push_Message($arrPushData);
 			$line->Reply_Message($arrPostData);
 		
