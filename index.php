@@ -176,7 +176,9 @@ else{
 									"stickerId" => $arrJson['events'][0]['message']['stickerId']
 								);
 			  break;
-			}			
+			}
+			$arrPostData['messages'][0]['type'] = "text";
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
 			$arrPushData = array("to"=>"U3ff18f16e94a80b192dd89eaaa8b7846","messages"=>$messages);
 			$line->Push_Message($arrPushData);
 			$line->Reply_Message($arrPostData);
