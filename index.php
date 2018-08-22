@@ -48,7 +48,8 @@ if(sizeof($array_message)==2){
 		break;
 		
 		case 'logout':
-			$response = $line -> logout($userId);
+			$data = array('cocode'=>$array_message[0],'userid'=>$userId);
+			$response = $line -> logout($data);
 			if($response=='success'){
 				$arrPostData['messages'][0]['type'] = "text";
 				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ";
