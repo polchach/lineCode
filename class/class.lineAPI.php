@@ -8,7 +8,7 @@ class lineAPI {
 	var $apiUrl_profile;
  
     function __construct() {
-		$this->accToken 		= "ylAhp+u00MghzDqCO5JzILMWHh8Fv1EFqOKrPtA8UYLAuadUzgzkYMDOL60kDyVCEPfhUi3q03EODOcHvztJPULUjy5Guqh6aRCmrDR8F8dAFV60gEmXgDjcgDGT32oI9p6B7cP14PZwT1n0goAGuAdB04t89/1O/w1cDnyilFU=";
+		$this->accToken 		= "O9yyPdY0+txPZb0aEFKNeJ0rwnoinigsIeVE0DuJFDArnh+RaLLXH7bTzXW1kj5VYP+4mqtwT7qnG/fa1SgNEZNlTSDa7Ur6aBWMxC5WnSS2pt5CrdSAM9fyEMDI4XMUmnBuK/xq2FruStgIWPWBRAdB04t89/1O/w1cDnyilFU=";
 		$this->apiUrl_push 		= "https://api.line.me/v2/bot/message/push";
 		$this->apiUrl_multicast = "https://api.line.me/v2/bot/message/multicast";
 		$this->apiUrl_reply 	= "https://api.line.me/v2/bot/message/reply";
