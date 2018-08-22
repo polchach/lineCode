@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set("Asia/Bangkok");
 
 require_once('class/class.lineAPI.php');
 $line = new lineAPI();
@@ -65,6 +64,8 @@ else{
     }
     else{
 		//$res = $line -> userState($userId);
+		date_default_timezone_set("Asia/Bangkok");
+
 		$date_time = date("d/m/Y H:i:s");
 		$res = '0';
 	
