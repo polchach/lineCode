@@ -34,13 +34,29 @@ if(sizeof($array_message)==2){
 		break;
 		
 		case 'login':
-			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
+			$data = array('cocode'=>$array_message[0],'userid'=>$userId);
+			$response = $line -> login($data);
+			if($response=='success'){
+				$arrPostData['messages'][0]['type'] = "text";
+				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
+			}else{
+				$arrPostData['messages'][0]['type'] = "text";
+				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบไม่สามารถ Login ได้ค่ะ\nกรุณาตรวจสอบข้อมูลอีกครั้งค่ะ";
+			}
+			
+
 		break;
 		
 		case 'logout':
-			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ";
+			$response = $line -> logout($userId);
+			if($response=='success'){
+				$arrPostData['messages'][0]['type'] = "text";
+				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ";
+			}else{
+				$arrPostData['messages'][0]['type'] = "text";
+				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบไม่สามารถ Logout ได้ค่ะ\nกรุณาตรวจสอบข้อมูลอีกครั้งค่ะ";
+			}
+			
 		break;
 		
 		case 'acw':

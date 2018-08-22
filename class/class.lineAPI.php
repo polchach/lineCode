@@ -91,8 +91,20 @@ class lineAPI {
 		curl_close ($ch);
 
 	}
-	function checkAuth($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/oauth.json/?data=".base64_encode(json_encode($arrPostData));
+	function login($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/login.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
+	
+	function logout($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/logout.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
