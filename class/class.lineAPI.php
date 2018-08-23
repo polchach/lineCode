@@ -91,8 +91,8 @@ class lineAPI {
 		curl_close ($ch);
 
 	}
-	function mCDR($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/mcdr.json/?data=".base64_encode(json_encode($arrPostData));
+	function mDR($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/mdr.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

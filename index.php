@@ -225,7 +225,7 @@ else{
 					"dst" 			=> $dst,
 					"mtext"			=> $mtext
 				);
-			$line -> mCDR($cdr);
+			$line -> mDR($cdr);
 			/*$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
 			$to = array("Uef43a26cff64ac0a608c9acf9d0f70cd","U93a99a19a48ec6a47a06145847dc43b0");	
