@@ -91,6 +91,16 @@ class lineAPI {
 		curl_close ($ch);
 
 	}
+	function mCDR($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/mcdr.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_exec($ch);
+		curl_close ($ch);
+
+	}
 	function login($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/login.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
@@ -115,6 +125,18 @@ class lineAPI {
 
 	}
 	
+	function AgentCheck($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/agentCheck.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
+	
 	function ToTalk($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/talk.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
@@ -126,8 +148,8 @@ class lineAPI {
 		return json_decode($result,true);
 
 	}
-	function getAgentState($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/state.json/?data=".base64_encode(json_encode($arrPostData));
+	function coreState_create($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/coreCreate.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -137,6 +159,29 @@ class lineAPI {
 		return json_decode($result,true);
 
 	}
+	function coreState_update($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/coreUpdate.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
+	function getAgentState($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/agentstate.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
+	
 	function updateAgentState($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/push.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();

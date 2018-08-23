@@ -12,8 +12,10 @@ $arrJson = json_decode($content, true);
 $arrPostData = array();
 $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 
-$userId = $arrJson['events'][0]['source']['userId'];
-$messageId = $arrJson['events'][0]['message']['id'];
+$userId 	= $arrJson['events'][0]['source']['userId'];
+$messageId 	= $arrJson['events'][0]['message']['id'];
+$roomId 	= $arrJson['events'][0]['source']['roomId'];
+$groupId 	= $arrJson['events'][0]['source']['groupId'];
 $array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
 if(sizeof($array_message)==2){
 	$role = '';
@@ -26,10 +28,10 @@ if(sizeof($array_message)==2){
 		}else{
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ" 
-			."\n1. วิธี login\nพิมพิ์  code/login"
-			."\n2. วิธี logout\nพิมพิ์  code/logout"
-			."\n3. วิธี พักชั่วขณะ (ACW)\nพิมพิ์  code/acw"
-			."\n4. วิธี พักใช้เวลานาน (DND)\nพิมพิ์  code/dnd";
+			."\n1. วิธี login พิมพิ์  code/login"
+			."\n2. วิธี logout พิมพิ์  code/logout"
+			."\n3. วิธี พักหลังจากจบ line (ACW) พิมพิ์  code/acw"
+			."\n4. วิธี พัก line ด้วยเหตุผล (reason) พิมพิ์  code/dnd";
 		}
 		break;
 		
@@ -82,8 +84,21 @@ else{
 		$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
     }
     else{
-		//$res = $line -> userState($userId);
+		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
+		$agentid = array("agentid" => $userId);
+		$res = $line -> AgentCheck($agentid);
+		if($res == 'yes'){
+			$type = 'A';
+		}else{
+			$type = 'C';
+		}
 		
+		/*$response = $line -> getAgentState1($userId);
+		if($response == 'success'){
+			line->coreState_update($userId);
+		}else{
+			line->coreState_create($userId);
+		}*/
 		$res = '0';
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
@@ -91,13 +106,13 @@ else{
 			
 			switch($arrJson['events'][0]['message']['type']){
 			  case 'text':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง Text"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"	=> "text",
 									"text"	=> $arrJson['events'][0]['message']['text']
 								);
@@ -107,13 +122,13 @@ else{
 			  break;
 			  
 			  case 'image':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง Image"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"					=> "image",
 									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 									"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
@@ -121,13 +136,13 @@ else{
 			  break;
 			  
 			  case 'video':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง Video"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"					=> "video",
 									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 									"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
@@ -135,13 +150,13 @@ else{
 			  break;
 			  
 			  case 'audio':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง Audio"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"					=> "audio",
 									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 									"duration"				=> $arrJson['events'][0]['message']['duration']
@@ -149,13 +164,13 @@ else{
 			  break;
 			  
 			  case 'file':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง File"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"		=> "file",
 									"fileName"	=> $arrJson['events'][0]['message']['fileName'],
 									"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
@@ -163,13 +178,13 @@ else{
 			  break;
 			  
 			  case 'location':
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง  Location"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"	=> "location",
 									"title"	=> "ส่งพิกัด โดยคุณ ".$name,
 									"address"	=> $arrJson['events'][0]['message']['address'],
@@ -181,19 +196,36 @@ else{
 			  
 			  case 'sticker':
 		
-				$event[] = array(
-									"type"		=> "text",
+				$event = array(
+									"type"		=> $type,
 									"sendby"	=> $name,
 									"senddate"	=> $date_time,
 									"comment"	=> "คุณ ".$name." ส่ง Sticker"
 								);
-				$messages[] = array(
+				$messages = array(
 									"type"		=> "sticker",
 									"packageId"	=> $arrJson['events'][0]['message']['packageId'],
 									"stickerId" => $arrJson['events'][0]['message']['stickerId']
 								);
 			  break;
 			}
+			$mtext = array(
+					"event" 	=> $event,
+					"message"	=> $messages
+				);
+			$cdr = array(
+					"linedate"		=> $date_time,
+					"uniqueid"		=> $uniqueid,
+					"messageid"		=> $messageid,
+					"roomid"		=> $roomid,
+					"groupid"		=> $groupid,
+					"mfile"			=> $file,
+					"mtype"			=> $type,
+					"src" 			=> $src,
+					"dst" 			=> $dst,
+					"mtext"			=> $mtext
+				);
+			$line -> mCDR($cdr);
 			/*$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
 			$to = array("Uef43a26cff64ac0a608c9acf9d0f70cd","U93a99a19a48ec6a47a06145847dc43b0");	
