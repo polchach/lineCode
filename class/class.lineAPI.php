@@ -126,7 +126,7 @@ class lineAPI {
 	}
 	
 	function AgentCheck($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/agentCheck.json/?data=".base64_encode(json_encode($arrPostData));
+		$strUrl = "http://www.thailandsmartai.com/GW/agent.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
