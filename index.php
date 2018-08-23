@@ -90,6 +90,8 @@ else{
 		$res = $line -> AgentCheck($uID);
 		if($res == '1'){
 			$type = 'A';
+			$res = $line -> GetUNQ($uID);
+			$uniqueid = $res['uniqueid'];
 		}else{
 			$type = 'C';
 			//หา AgentID ที่พร้อมตอบ line
@@ -213,16 +215,16 @@ else{
 					"event" 	=> $event,
 					"message"	=> $messages
 				);
+			
 			$cdr = array(
 					"linedate"		=> $date_time,
 					"uniqueid"		=> $uniqueid,
-					"messageid"		=> $messageid,
-					"roomid"		=> $roomid,
-					"groupid"		=> $groupid,
-					"mfile"			=> $file,
+					"messageid"		=> $messageId,
+					"roomid"		=> $roomId,
+					"groupid"		=> $groupId,
 					"mtype"			=> $type,
-					"src" 			=> $src,
-					"dst" 			=> $dst,
+					"src" 			=> $userId,
+					"dst" 			=> $agentId,
 					"mtext"			=> $mtext
 				);
 			$line -> mDR($cdr);
