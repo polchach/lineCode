@@ -85,21 +85,21 @@ else{
     }
     else{
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
-		$agentid = array("agentid" => $userId);
-		$res = $line -> AgentCheck($agentid);
-		if($res == 'yes'){
+		$agentId ='U93a99a19a48ec6a47a06145847dc43b0';
+		$uID = array("userid" => $userId);
+		$res = $line -> AgentCheck($uID);
+		if($res == '1'){
 			$type = 'A';
 		}else{
 			$type = 'C';
+			//หา AgentID ที่พร้อมตอบ line
+			$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+			$res = $line -> CoreState($data);
+			$uniqueid = $res['uniqueid'];
 		}
 		
-		/*$response = $line -> getAgentState1($userId);
-		if($response == 'success'){
-			line->coreState_update($userId);
-		}else{
-			line->coreState_create($userId);
-		}*/
-		$res = '0';
+		
+		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
 			$pic = $results['pictureUrl'];

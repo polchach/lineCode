@@ -124,7 +124,17 @@ class lineAPI {
 		return json_decode($result,true);
 
 	}
-	
+	function CoreState($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/corestate.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
 	function AgentCheck($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/agent.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
