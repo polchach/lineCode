@@ -135,7 +135,17 @@ class lineAPI {
 		return json_decode($result,true);
 
 	}
-	
+	function ACD($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/acd.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
 	function GetUNQ($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/getunq.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();

@@ -85,7 +85,9 @@ else{
     }
     else{
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
-		$agentId ='U93a99a19a48ec6a47a06145847dc43b0';
+		$acd = array("cmd" => "ACD");
+		$r = $line->ACD($acd);
+		$agentId = $r['agentid'];
 		$uID = array("userid" => $userId);
 		$res = $line -> AgentCheck($uID);
 		
@@ -94,10 +96,6 @@ else{
 			
 		}else{
 			$type = 'C';
-			//หา AgentID ที่พร้อมตอบ line
-			//$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-			//$r = $line -> CoreState($data);
-			//$uniqueid = $r['uniqueid'];
 		}
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$line -> CoreState($data);
