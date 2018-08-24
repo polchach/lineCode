@@ -88,7 +88,7 @@ else{
 		$agentId ='U93a99a19a48ec6a47a06145847dc43b0';
 		$uID = array("userid" => $userId);
 		$res = $line -> AgentCheck($uID);
-		$r = $line -> GetUNQ($uID);
+		
 		if($res == '1'){
 			$type = 'A';
 			
@@ -99,6 +99,7 @@ else{
 			//$r = $line -> CoreState($data);
 			//$uniqueid = $r['uniqueid'];
 		}
+		$r = $line -> GetUNQ($uID);
 		$uniqueid = $r['uniqueid'];
 		
 		
