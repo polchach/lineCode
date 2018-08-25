@@ -207,7 +207,7 @@ class lineAPI {
 	}
 	
 	function getUserProfile($userId){
-		$strUrl = $this->apiUrl_profile ."/{$userId}";
+		$strUrl = $this->apiUrl_profile ."/".$userId;
  
 		$arrHeader = array();
 		$arrHeader[] = "Content-Type: application/json";
