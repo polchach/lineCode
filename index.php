@@ -38,7 +38,7 @@ if(sizeof($array_message)==2){
 		case 'login':
 			$data = array('cocode'=>$array_message[0],'userid'=>$userId);
 			$response = $line -> login($data);
-			if($response=='success'){
+			if($response['result']=='success'){
 				$arrPostData['messages'][0]['type'] = "text";
 				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบพร้อมใช้งานแล้วค่ะ"; 
 			}else{
@@ -52,7 +52,7 @@ if(sizeof($array_message)==2){
 		case 'logout':
 			$data = array('cocode'=>$array_message[0],'userid'=>$userId);
 			$response = $line -> logout($data);
-			if($response=='success'){
+			if($response['result']=='success'){
 				$arrPostData['messages'][0]['type'] = "text";
 				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nระบบยกเลิกการใช้งานแล้วค่ะ";
 			}else{
