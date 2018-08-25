@@ -103,18 +103,6 @@ else{
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
 		$uniqueid = $rs['uniqueid'];
-		$cdr = array(
-					"linedate"		=> date(),
-					"uniqueid"		=> $uniqueid,
-					"messageid"		=> '1111111111',
-					"roomid"		=> '1111111111',
-					"groupid"		=> '1111111111',
-					"mtype"			=> $type,
-					"src" 			=> $userId,
-					"dst" 			=> $agentId,
-					"mtext"			=> '1111111111',
-				);
-			$line -> mdr($cdr);
 		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
@@ -223,23 +211,7 @@ else{
 									"packageId"	=> $arrJson['events'][0]['message']['packageId'],
 									"stickerId" => $arrJson['events'][0]['message']['stickerId']
 								);
-				$mtext = array(
-						"event" 	=> $event,
-						"message"	=> $messages
-					);
 				
-				$cdr = array(
-						"linedate"		=> $date_time,
-						"uniqueid"		=> $uniqueid,
-						"messageid"		=> $messageId,
-						"roomid"		=> $roomId,
-						"groupid"		=> $groupId,
-						"mtype"			=> $type,
-						"src" 			=> $userId,
-						"dst" 			=> $agentId,
-						"mtext"			=> $mtext
-					);
-				$line -> mdr($cdr);
 			  break;
 			}
 			$mtext = array(
