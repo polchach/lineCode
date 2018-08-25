@@ -100,7 +100,7 @@ else {
 			$type = 'C';
 			
 		}
-		
+		$userId = "U93a99a19a48ec6a47a06145847dc43b0";
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
 		$uniqueid = $rs['uniqueid'];
