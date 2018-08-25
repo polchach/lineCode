@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Bangkok");
-
+$date_time = date("d/m/Y H:i:s");
 
 require_once('class/class.lineAPI.php');
 $line = new lineAPI();
@@ -106,9 +106,9 @@ else {
 		$rs = $line -> CoreState($data);
 		$uniqueid = "1535192431.8732";//$rs['uniqueid'];
 		
-			$date_time = date("d/m/Y H:i:s");
-			$name = $results['displayName'];
-			$pic = $results['pictureUrl'];
+			
+			$name = "test";//$results['displayName'];
+			$pic = "url";//$results['pictureUrl'];
 			
 			
 			switch($arrJson['events'][0]['message']['type']){
