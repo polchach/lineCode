@@ -79,7 +79,7 @@ if(sizeof($array_message)==2){
 else {
 
 		$results = $line -> getUserProfile($userId);
-	  
+		$name = $results['displayName'];
 		if($results['userId'] == ""){
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
@@ -105,7 +105,7 @@ else {
 		$uniqueid = $rs['uniqueid'];
 		
 			
-			$name = $results['displayName'];
+			
 			
 			switch($arrJson['events'][0]['message']['type']){
 			  case 'text':
