@@ -113,8 +113,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return $result;
-
+		return json_decode($result,true);
 	}
 	
 	function logout($arrPostData){
@@ -125,7 +124,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return $result;
+		return json_decode($result,true);
 
 	}
 	function CoreState($arrPostData){
@@ -169,8 +168,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return $result;
-
+		return json_decode($result,true);
 	}
 	
 	function ToTalk($arrPostData){
