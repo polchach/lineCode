@@ -107,8 +107,8 @@ else {
 		$uniqueid = "1535192431.8732";//$rs['uniqueid'];
 		
 			
-			$name = "test";//$results['displayName'];
-			$pic = "url";//$results['pictureUrl'];
+			$name = $results['displayName'];
+			$pic = $results['pictureUrl'];
 			
 			
 			switch($arrJson['events'][0]['message']['type']){
