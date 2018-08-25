@@ -76,7 +76,7 @@ if(sizeof($array_message)==2){
 	$line->Reply_Message($arrPostData);
 
 }
-else{
+else if(sizeof($userId) >5){
     $results = $line -> getUserProfile($userId);
   
     if(sizeof($results)< 2){
