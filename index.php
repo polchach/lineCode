@@ -76,14 +76,15 @@ if(sizeof($array_message)==2){
 	$line->Reply_Message($arrPostData);
 
 }
-else if(sizeof($userId) >5){
-    $results = $line -> getUserProfile($userId);
-  
-    if(sizeof($results)< 2){
-		$arrPostData['messages'][0]['type'] = "text";
-		$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
-    }
-    else{
+else {
+	if(sizeof($userId) >5){
+		$results = $line -> getUserProfile($userId);
+	  
+		if(sizeof($results)< 2){
+			$arrPostData['messages'][0]['type'] = "text";
+			$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
+		}
+		else{
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
 
 		$acd = array("cmd" => "ACD");
@@ -232,6 +233,7 @@ else if(sizeof($userId) >5){
 				);
 			$line -> mdr($cdr);
 		
+		}
 	}
 
 }
