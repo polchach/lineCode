@@ -89,6 +89,7 @@ else {
 		$acd = array("cmd" => "ACD");
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
+		if($agentId != ""){
 		$uID = array("userid" => $userId);
 		$res = $line -> AgentCheck($uID);
 		
@@ -215,7 +216,7 @@ else {
 					"mtext"			=> $mtext
 				);
 			$line -> mdr($cdr);
-		
+		}
 		
 	}
 
