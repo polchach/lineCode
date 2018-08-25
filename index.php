@@ -91,7 +91,7 @@ else{
 		$uID = array("userid" => $userId);
 		$res = $line -> AgentCheck($uID);
 		
-		if($res == '1'){
+		if($res['result']== '1'){
 			$type = 'A';
 			
 		}else{
