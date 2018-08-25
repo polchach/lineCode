@@ -105,9 +105,7 @@ else {
 		$uniqueid = $rs['uniqueid'];
 		
 			
-			$name = "TTT";// $results['displayName'];
-			$pic = "HHH"; //$results['pictureUrl'];
-			
+			$name = $results['displayName'];
 			
 			switch($arrJson['events'][0]['message']['type']){
 			  case 'text':
