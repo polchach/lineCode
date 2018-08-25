@@ -98,8 +98,7 @@ else{
 			$type = 'C';
 		}
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-		$line -> CoreState($data);
-		$r = $line -> GetUNQ($uID);
+		$r = $line -> CoreState($data);
 		$uniqueid = $r['uniqueid'];
 		
 		
