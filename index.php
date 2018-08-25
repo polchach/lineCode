@@ -89,133 +89,133 @@ else {
 		$acd = array("cmd" => "ACD");
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
-		if($agentId != ""){
-		$uID = array("userid" => $userId);
-		$res = $line -> AgentCheck($uID);
-		
-		if($res['result']== '1'){
-			$type = 'A';
+		if($agentId != "0"){
+			$uID = array("userid" => $userId);
+			$res = $line -> AgentCheck($uID);
 			
-		}else{
-			$type = 'C';
-			
-		}
-		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-		$rs = $line -> CoreState($data);
-		$uniqueid = $rs['uniqueid'];
-		
-			
-			
-			
-			switch($arrJson['events'][0]['message']['type']){
-			  case 'text':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"	=> "text",
-									"text"	=> $arrJson['events'][0]['message']['text']
-								);
-				//ค้นหาข้อมูลใน ฐานข้อมูล google แล้วนำมาตอบกลับไป ถ้าเป็น AI
+			if($res['result']== '1'){
+				$type = 'A';
 				
+			}else{
+				$type = 'C';
 				
-			  break;
-			  
-			  case 'image':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"					=> "image",
-									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-									"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
-								);
-			  break;
-			  
-			  case 'video':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"					=> "video",
-									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-									"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
-								);
-			  break;
-			  
-			  case 'audio':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"					=> "audio",
-									"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-									"duration"				=> $arrJson['events'][0]['message']['duration']
-								);
-			  break;
-			  
-			  case 'file':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"		=> "file",
-									"fileName"	=> $arrJson['events'][0]['message']['fileName'],
-									"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
-								);
-			  break;
-			  
-			  case 'location':
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"	=> "location",
-									"title"	=> "ส่งพิกัด โดยคุณ ".$name,
-									"address"	=> $arrJson['events'][0]['message']['address'],
-									"latitude"	=> $arrJson['events'][0]['message']['latitude'],
-									"longitude"	=> $arrJson['events'][0]['message']['longitude']
-								);
-			  break;
-			 
-			  
-			  case 'sticker':
-		
-				$event = array(
-									"type"		=> $type,
-									"senddate"	=> $date_time
-								);
-				$messages = array(
-									"type"		=> "sticker",
-									"packageId"	=> $arrJson['events'][0]['message']['packageId'],
-									"stickerId" => $arrJson['events'][0]['message']['stickerId']
-								);
-				
-			  break;
 			}
-			$mtext = array(
-					"event" 	=> $event,
-					"message"	=> $messages
-				);
+			$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+			$rs = $line -> CoreState($data);
+			$uniqueid = $rs['uniqueid'];
 			
-			$cdr = array(
-					"linedate"		=> $date_time,
-					"uniqueid"		=> $uniqueid,
-					"messageid"		=> $messageId,
-					"roomid"		=> $roomId,
-					"groupid"		=> $groupId,
-					"mtype"			=> $type,
-					"src" 			=> $userId,
-					"dst" 			=> $agentId,
-					"mtext"			=> $mtext
-				);
-			$line -> mdr($cdr);
+				
+				
+				
+				switch($arrJson['events'][0]['message']['type']){
+				  case 'text':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"	=> "text",
+										"text"	=> $arrJson['events'][0]['message']['text']
+									);
+					//ค้นหาข้อมูลใน ฐานข้อมูล google แล้วนำมาตอบกลับไป ถ้าเป็น AI
+					
+					
+				  break;
+				  
+				  case 'image':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"					=> "image",
+										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
+									);
+				  break;
+				  
+				  case 'video':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"					=> "video",
+										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
+									);
+				  break;
+				  
+				  case 'audio':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"					=> "audio",
+										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+										"duration"				=> $arrJson['events'][0]['message']['duration']
+									);
+				  break;
+				  
+				  case 'file':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"		=> "file",
+										"fileName"	=> $arrJson['events'][0]['message']['fileName'],
+										"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
+									);
+				  break;
+				  
+				  case 'location':
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"	=> "location",
+										"title"	=> "ส่งพิกัด โดยคุณ ".$name,
+										"address"	=> $arrJson['events'][0]['message']['address'],
+										"latitude"	=> $arrJson['events'][0]['message']['latitude'],
+										"longitude"	=> $arrJson['events'][0]['message']['longitude']
+									);
+				  break;
+				 
+				  
+				  case 'sticker':
+			
+					$event = array(
+										"type"		=> $type,
+										"senddate"	=> $date_time
+									);
+					$messages = array(
+										"type"		=> "sticker",
+										"packageId"	=> $arrJson['events'][0]['message']['packageId'],
+										"stickerId" => $arrJson['events'][0]['message']['stickerId']
+									);
+					
+				  break;
+				}
+				$mtext = array(
+						"event" 	=> $event,
+						"message"	=> $messages
+					);
+				
+				$cdr = array(
+						"linedate"		=> $date_time,
+						"uniqueid"		=> $uniqueid,
+						"messageid"		=> $messageId,
+						"roomid"		=> $roomId,
+						"groupid"		=> $groupId,
+						"mtype"			=> $type,
+						"src" 			=> $userId,
+						"dst" 			=> $agentId,
+						"mtext"			=> $mtext
+					);
+				$line -> mdr($cdr);
 		}
 		
 	}
