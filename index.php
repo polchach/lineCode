@@ -99,7 +99,7 @@ else{
 		}
 		$data = array("userid" => $userId,"agentid" => $userId,"type"=>$type);
 		$rs = $line -> CoreState($data);
-		$uniqueid = $rs['uniqueid'];
+		$uniqueid = "1535177242.0822";//$rs['uniqueid'];
 		
 		
 			$date_time = date("d/m/Y H:i:s");
