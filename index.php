@@ -105,7 +105,7 @@ else{
 		$uniqueid = $rs['uniqueid'];
 		$cdr = array(
 					"linedate"		=> date(),
-					"uniqueid"		=> '1111111111',
+					"uniqueid"		=> $uniqueid,
 					"messageid"		=> '1111111111',
 					"roomid"		=> '1111111111',
 					"groupid"		=> '1111111111',
