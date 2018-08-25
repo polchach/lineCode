@@ -89,15 +89,15 @@ else{
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
 		$uID = array("userid" => $userId);
-		/*$res = $line -> AgentCheck($uID);
+		$res = $line -> AgentCheck($uID);
 		
 		if($res['result']== '1'){
 			$type = 'A';
 			
 		}else{
 			$type = 'C';
-		}*/
-		$type = 'C';
+		}
+		
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
 		$uniqueid = $rs['uniqueid'];
