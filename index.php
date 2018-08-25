@@ -85,7 +85,7 @@ else{
     }
     else{
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
-		$userId = "U93a99a19a48ec6a47a06145847dc43b0";
+
 		$acd = array("cmd" => "ACD");
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
