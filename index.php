@@ -97,7 +97,7 @@ else{
 		}else{
 			$type = 'C';
 		}
-		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+		$data = array("userid" => $userId,"agentid" => $userId,"type"=>$type);
 		$rs = $line -> CoreState($data);
 		$uniqueid = $rs['uniqueid'];
 		
