@@ -108,6 +108,33 @@ else {
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
 			$pic = $results['pictureUrl'];
+			$event = array(
+									"type"		=> $type,
+									"sendby"	=> $name,
+									"senddate"	=> $date_time,
+									"comment"	=> "คุณ ".$name." ส่ง Text"
+								);
+				$messages = array(
+									"type"	=> "text",
+									"text"	=> $arrJson['events'][0]['message']['text']
+								);
+			$mtext = array(
+					"event" 	=> $event,
+					"message"	=> $messages
+				);
+			
+			$cdr = array(
+					"linedate"		=> $date_time,
+					"uniqueid"		=> $uniqueid,
+					"messageid"		=> $messageId,
+					"roomid"		=> $roomId,
+					"groupid"		=> $groupId,
+					"mtype"			=> $type,
+					"src" 			=> $userId,
+					"dst" 			=> $agentId,
+					"mtext"			=> $mtext
+				);
+			$line -> mdr($cdr);
 			
 			switch($arrJson['events'][0]['message']['type']){
 			  case 'text':
@@ -215,23 +242,7 @@ else {
 				
 			  break;
 			}
-			$mtext = array(
-					"event" 	=> $event,
-					"message"	=> $messages
-				);
 			
-			$cdr = array(
-					"linedate"		=> $date_time,
-					"uniqueid"		=> $uniqueid,
-					"messageid"		=> $messageId,
-					"roomid"		=> $roomId,
-					"groupid"		=> $groupId,
-					"mtype"			=> $type,
-					"src" 			=> $userId,
-					"dst" 			=> $agentId,
-					"mtext"			=> $mtext
-				);
-			$line -> mdr($cdr);
 		
 		
 	}
