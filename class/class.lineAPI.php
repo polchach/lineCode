@@ -245,7 +245,7 @@ class lineAPI {
 							"status" 	=> "1"
 						);	
 
-		}else{
+		}else if(sizeof($data) == 2){
 			$users = array(
 							"userId"		=> $data['userId'],
 							"displayName"	=> $data['displayName'],
