@@ -223,6 +223,23 @@ else{
 									"packageId"	=> $arrJson['events'][0]['message']['packageId'],
 									"stickerId" => $arrJson['events'][0]['message']['stickerId']
 								);
+				$mtext = array(
+						"event" 	=> $event,
+						"message"	=> $messages
+					);
+				
+				$cdr = array(
+						"linedate"		=> $date_time,
+						"uniqueid"		=> $uniqueid,
+						"messageid"		=> $messageId,
+						"roomid"		=> $roomId,
+						"groupid"		=> $groupId,
+						"mtype"			=> $type,
+						"src" 			=> $userId,
+						"dst" 			=> $agentId,
+						"mtext"			=> $mtext
+					);
+				$line -> mdr($cdr);
 			  break;
 			}
 			$mtext = array(
