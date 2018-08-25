@@ -245,17 +245,6 @@ class lineAPI {
 							"status" 	=> "1"
 						);	
 
-		}else{
-			$users = array(
-							"userId"		=> $data['userId'],
-							"displayName"	=> $data['displayName'],
-							"pictureUrl"	=> $data['pictureUrl'],
-							"statusMessage"	=> "",
-							"phone" 	=> "",
-							"email" 	=> "",
-							"role" 		=> "EndUser",
-							"status" 	=> "1"
-						);	
 		}
 		$arrPostData = array(
 				"users" => $users
