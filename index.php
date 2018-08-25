@@ -119,9 +119,6 @@ else{
 									"type"	=> "text",
 									"text"	=> $arrJson['events'][0]['message']['text']
 								);
-				//ค้นหาข้อมูลใน ฐานข้อมูล google แล้วนำมาตอบกลับไป ถ้าเป็น AI
-				
-				
 			  break;
 			  
 			  case 'image':
