@@ -100,15 +100,13 @@ else {
 			$type = 'C';
 			
 		}
-		$userId = "U93a99a19a48ec6a47a06145847dc43b0";
-		$agentId = "Uef43a26cff64ac0a608c9acf9d0f70cd";
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
-		$uniqueid = "1535192431.8732";//$rs['uniqueid'];
+		$uniqueid = $rs['uniqueid'];
 		
 			
-			$name = $results['displayName'];
-			$pic = $results['pictureUrl'];
+			$name = "TTT";// $results['displayName'];
+			$pic = "HHH"; //$results['pictureUrl'];
 			
 			
 			switch($arrJson['events'][0]['message']['type']){
