@@ -103,7 +103,7 @@ else {
 		
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
-		$uniqueid = '2222222';//$rs['uniqueid'];
+		$uniqueid = $rs['uniqueid'];
 		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
