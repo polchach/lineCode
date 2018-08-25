@@ -105,14 +105,14 @@ else {
 		$rs = $line -> CoreState($data);
 		$uniqueid = $rs['uniqueid'];
 		
-			$date_time = date("d/m/Y H:i:s");
-			$name = $results['displayName'];
-			$pic = $results['pictureUrl'];
+			//$date_time = date("d/m/Y H:i:s");
+			//$name = $results['displayName'];
+			//$pic = $results['pictureUrl'];
 			$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Text"
+									"sendby"	=> "",
+									"senddate"	=> "",
+									"comment"	=> ""
 								);
 				$messages = array(
 									"type"	=> "text",
