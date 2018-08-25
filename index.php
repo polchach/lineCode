@@ -98,9 +98,9 @@ else{
 			$type = 'C';
 		}
 		
-		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-		$rs = $line -> CoreState($data);
-		$uniqueid = $rs['uniqueid'];
+		//$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+		//$rs = $line -> CoreState($data);
+		$uniqueid = "1535177242.0822";// $rs['uniqueid'];
 		
 		
 			$date_time = date("d/m/Y H:i:s");
