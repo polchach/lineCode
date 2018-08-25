@@ -79,7 +79,6 @@ if(sizeof($array_message)==2){
 else {
 
 		$results = $line -> getUserProfile($userId);
-		$name = $results['displayName'];
 		if($results['userId'] == ""){
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
@@ -111,9 +110,7 @@ else {
 			  case 'text':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Text"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"	=> "text",
@@ -127,9 +124,7 @@ else {
 			  case 'image':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Image"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"					=> "image",
@@ -141,9 +136,7 @@ else {
 			  case 'video':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Video"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"					=> "video",
@@ -155,9 +148,7 @@ else {
 			  case 'audio':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Audio"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"					=> "audio",
@@ -169,9 +160,7 @@ else {
 			  case 'file':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง File"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"		=> "file",
@@ -183,9 +172,7 @@ else {
 			  case 'location':
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง  Location"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"	=> "location",
@@ -201,9 +188,7 @@ else {
 		
 				$event = array(
 									"type"		=> $type,
-									"sendby"	=> $name,
-									"senddate"	=> $date_time,
-									"comment"	=> "คุณ ".$name." ส่ง Sticker"
+									"senddate"	=> $date_time
 								);
 				$messages = array(
 									"type"		=> "sticker",
