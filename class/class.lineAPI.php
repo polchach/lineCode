@@ -31,6 +31,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
+		return json_decode($result,true);
 	}
 	function Push_Message($arrPostData){
 		$strUrl = $this->apiUrl_push;
@@ -48,6 +49,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
+		return json_decode($result,true);
 	}
 	function Multicast_Message($arrPostData){
 		$strUrl = $this->apiUrl_multicast;
@@ -65,6 +67,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
+		return json_decode($result,true);
 	}
 	function Get_Content($messageId){
 		$strUrl = "https://api.line.me/v2/bot/message/{$messageId}/content";
@@ -80,6 +83,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
+		return json_decode($result,true);
 	}
 	function pushToDB($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/push.json/?data=".base64_encode(json_encode($arrPostData));
@@ -109,7 +113,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return json_decode($result,true);
+		return $result;
 
 	}
 	
@@ -121,7 +125,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return json_decode($result,true);
+		return $result;
 
 	}
 	function CoreState($arrPostData){
@@ -165,7 +169,7 @@ class lineAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close ($ch);
-		return json_decode($result,true);
+		return $result;
 
 	}
 	
