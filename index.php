@@ -98,8 +98,8 @@ else{
 			$type = 'C';
 		}
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-		$r = $line -> CoreState($data);
-		$uniqueid = $r['uniqueid'];
+		$rs = $line -> CoreState($data);
+		$uniqueid = $rs['uniqueid'];
 		
 		
 			$date_time = date("d/m/Y H:i:s");
