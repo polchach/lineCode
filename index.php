@@ -216,6 +216,19 @@ else {
 						"mtext"			=> $mtext
 					);
 				$line -> mdr($cdr);
+			$arrPostData['messages'][0]['type'] = "text";
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานยังไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
+			$arrPostData['messages'][0]['type'] = "sticker";
+			$arrPostData['messages'][0]['sticker_id'] = 283;
+			$arrPostData['messages'][0]['package_id'] = 4;
+			$line->Reply_Message($arrPostData);
+		}else{
+			$arrPostData['messages'][0]['type'] = "text";
+			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานยังไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
+			$arrPostData['messages'][0]['type'] = "sticker";
+			$arrPostData['messages'][0]['sticker_id'] = 283;
+			$arrPostData['messages'][0]['package_id'] = 4;
+			$line->Reply_Message($arrPostData);
 		}
 		
 	}
