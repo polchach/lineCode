@@ -77,7 +77,7 @@ if(sizeof($array_message)==2){
 
 }
 else {
-	if(sizeof($userId) >5){
+
 		$results = $line -> getUserProfile($userId);
 	  
 		if(sizeof($results)< 2){
@@ -233,7 +233,7 @@ else {
 				);
 			$line -> mdr($cdr);
 		
-		}
+		
 	}
 
 }
