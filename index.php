@@ -97,6 +97,18 @@ else{
 			
 		}else{
 			$type = 'C';
+			$cdr = array(
+					"linedate"		=> date(),
+					"uniqueid"		=> '1111111111',
+					"messageid"		=> '1111111111',
+					"roomid"		=> '1111111111',
+					"groupid"		=> '1111111111',
+					"mtype"			=> $type,
+					"src" 			=> $userId,
+					"dst" 			=> $agentId,
+					"mtext"			=> '1111111111',
+				);
+			$line -> mdr($cdr);
 		}
 		
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
