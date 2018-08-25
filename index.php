@@ -88,7 +88,7 @@ else{
 		$acd = array("cmd" => "ACD");
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
-		$uID = array("userid" => $userId);
+		$uID = array("agentid" => $userId);
 		$res = $line -> AgentCheck($uID);
 		
 		if($res == '1'){
