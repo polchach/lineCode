@@ -207,7 +207,7 @@ class lineAPI {
 	}
 	
 	function getUserProfile($userId){
-		$strUrl = $this->apiUrl_profile ."/".$userId;
+		$strUrl = $this->apiUrl_profile ."/{$userId}";
  
 		$arrHeader = array();
 		$arrHeader[] = "Content-Type: application/json";
@@ -222,6 +222,17 @@ class lineAPI {
 	
 		$data = json_decode($result,true);
 		curl_close ($ch);
+		$users = array(
+							"userId"		=> "",
+							"displayName"	=> "",
+							"pictureUrl"	=> "",
+							"statusMessage"	=> "",
+							"phone" 	=> "",
+							"email" 	=> "",
+							"role" 		=> "",
+							"status" 	=> ""
+						);	
+
 		if(sizeof($data) == 4){
 			$users = array(
 							"userId"		=> $data['userId'],

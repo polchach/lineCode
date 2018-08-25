@@ -80,7 +80,7 @@ else {
 
 		$results = $line -> getUserProfile($userId);
 	  
-		if(sizeof($results)< 2){
+		if($results['userId'] == ""){
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
 		}
