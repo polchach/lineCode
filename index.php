@@ -97,7 +97,13 @@ else{
 			
 		}else{
 			$type = 'C';
-			$cdr = array(
+			
+		}
+		
+		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+		$rs = $line -> CoreState($data);
+		$uniqueid = $rs['uniqueid'];
+		$cdr = array(
 					"linedate"		=> date(),
 					"uniqueid"		=> '1111111111',
 					"messageid"		=> '1111111111',
@@ -109,12 +115,6 @@ else{
 					"mtext"			=> '1111111111',
 				);
 			$line -> mdr($cdr);
-		}
-		
-		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-		$rs = $line -> CoreState($data);
-		$uniqueid = $rs['uniqueid'];
-		
 		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
