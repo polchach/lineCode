@@ -15,7 +15,7 @@ $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 $userId 	= $arrJson['events'][0]['source']['userId'];
 $messageId 	= $arrJson['events'][0]['message']['id'];
 $roomId 	= $arrJson['events'][0]['source']['roomId'];
-$groupId 	= $arrJson['events'][0]['source']['groupId'];
+$groupId 	= "";//$arrJson['events'][0]['source']['groupId'];
 $array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
 if(sizeof($array_message)==2){
 	$role = '';
