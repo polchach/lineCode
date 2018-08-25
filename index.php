@@ -106,7 +106,6 @@ else{
 		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
-			$pic = $results['pictureUrl'];
 			
 			switch($arrJson['events'][0]['message']['type']){
 			  case 'text':
