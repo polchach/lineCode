@@ -116,7 +116,7 @@ else {
 								);
 				$messages = array(
 									"type"	=> "text",
-									"text"	=> $arrJson['events'][0]['message']['text']
+									"text"	=> ""//$arrJson['events'][0]['message']['text']
 								);
 			$mtext = array(
 					"event" 	=> $event,
