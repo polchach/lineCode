@@ -104,7 +104,7 @@ else {
 		$agentId = "Uef43a26cff64ac0a608c9acf9d0f70cd";
 		$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 		$rs = $line -> CoreState($data);
-		$uniqueid = $rs['uniqueid'];
+		$uniqueid = "1535192431.8732";//$rs['uniqueid'];
 		
 			$date_time = date("d/m/Y H:i:s");
 			$name = $results['displayName'];
