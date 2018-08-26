@@ -233,7 +233,7 @@ else {
 					);
 
 				$line -> mdr($cdr);
-
+				unset($messages);
 		}else{
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
