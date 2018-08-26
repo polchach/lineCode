@@ -206,12 +206,14 @@ else {
 				$agentid = $response['agentid'];
 				
 				if(strlen($roomId) < 10){
-					
+					$arrPostData['messages'][0]['type'] = "sticker";
+					$arrPostData['messages'][0]['packageId'] = 4;
+					$arrPostData['messages'][0]['stickerId'] = 238;
 					if($type=='A'){						
-						$arrPushData = array("to"=>$userid,"messages"=>$messages);
+						$arrPushData = array("to"=>$userid,$arrPostData);
 						$line->Push_Message($arrPushData);
 					}else {
-						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
+						$arrPushData = array("to"=>$agentid,$arrPostData);
 						$line->Push_Message($arrPushData);
 					}
 				}
