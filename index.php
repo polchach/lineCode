@@ -203,9 +203,19 @@ else {
 						"event" 	=> $event,
 						"message"	=> $messages
 					);
-				$arrPushData = array("to"=>$userId,"messages"=>$messages);
-				//$line->Multicast_Message($arrPushData);
-				$line->Push_Message($arrPushData);
+				if($roomId == ''){
+					
+					if($type=='A'){
+						$arrPostData = array("uniqueid" => $uniqueid,"userid"=>$userId);
+						$response = line->SrcDstId($arrPostData);
+						$arrPushData = array("to"=>$response['userid'],"messages"=>$messages);
+						$line->Push_Message($arrPushData);
+					}else {
+						$arrPushData = array("to"=>$agentId,"messages"=>$messages);
+						$line->Push_Message($arrPushData);
+					}
+				}
+				
 				
 				$cdr = array(
 						"linedate"		=> $date_time,
