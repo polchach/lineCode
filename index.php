@@ -203,6 +203,9 @@ else {
 						"event" 	=> $event,
 						"message"	=> $messages
 					);
+				$arrPushData = array("to"=>$agentId,"messages"=>$messages);
+				//$line->Multicast_Message($arrPushData);
+				$line->Push_Message($arrPushData);
 				
 				$cdr = array(
 						"linedate"		=> $date_time,
