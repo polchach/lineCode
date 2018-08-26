@@ -193,8 +193,8 @@ else {
 									);
 					$messages[] = array(
 										"type"		=> "sticker",
-										"packageId"	=> 4, //$arrJson['events'][0]['message']['packageId'],
-										"stickerId" => 238 //$arrJson['events'][0]['message']['stickerId']
+										"packageId"	=> $arrJson['events'][0]['message']['packageId'],
+										"stickerId" => $arrJson['events'][0]['message']['stickerId']
 									);
 					
 				  break;
