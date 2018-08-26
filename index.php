@@ -205,7 +205,7 @@ else {
 				$userid = $response['userid'];
 				$agentid = $response['agentid'];
 				
-				/*if(strlen($roomId) < 10){
+				if(strlen($roomId) < 10){
 					
 					if($type=='A'){						
 						$arrPushData = array("to"=>$userid,"messages"=>$messages);
@@ -214,9 +214,7 @@ else {
 						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}
-				}*/
-				$arrPushData = array("to"=>$userId,"messages"=>$messages);
-						$line->Push_Message($arrPushData);
+				}
 				
 				$mtext = array(
 						"event" 	=> $event,
