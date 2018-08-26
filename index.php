@@ -191,10 +191,12 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
+					$packageId = $arrJson['events'][0]['message']['packageId'];
+					$stickerId = $arrJson['events'][0]['message']['stickerId'];
 					$messages[] = array(
 										"type"		=> "sticker",
-										"packageId"	=> (int)$arrJson['events'][0]['message']['packageId'],
-										"stickerId" => (int)$arrJson['events'][0]['message']['stickerId']
+										"packageId"	=> (int)$packageId,
+										"stickerId" => (int)$stickerId
 									);
 					
 				  break;
