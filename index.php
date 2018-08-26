@@ -199,10 +199,7 @@ else {
 					
 				  break;
 				}
-				$mtext = array(
-						"event" 	=> $event,
-						"message"	=> $messages
-					);
+				
 				$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
 				$response = $line->SrcDstId($data);
 				$userid = $response['userid'];
@@ -218,14 +215,13 @@ else {
 						$line->Push_Message($arrPushData);
 					}
 				}*/
-				if($type=='A'){						
-						$arrPushData = array("to"=>$userid,"messages"=>$messages);
+				$arrPushData = array("to"=>$userId,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
-					}else {
-						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
-						$line->Push_Message($arrPushData);
-					}
 				
+				$mtext = array(
+						"event" 	=> $event,
+						"message"	=> $messages
+					);
 				$cdr = array(
 						"linedate"		=> $date_time,
 						"uniqueid"		=> $uniqueid,
