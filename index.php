@@ -203,7 +203,7 @@ else {
 						"event" 	=> $event,
 						"message"	=> $messages
 					);
-				$to[] = array($agentId,$userId);
+				$to = "[".$agentId .",".$userId."]";
 				$arrPushData("to"=> $to,"messages"=>$messages);
 				$line->Multicast_Message($arrPushData);
 				//$line->Push_Message($arrPushData);
