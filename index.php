@@ -204,9 +204,9 @@ else {
 						"message"	=> $messages
 					);
 				//$to = "[".$agentId .",".$userId."]";
-				$arrPushData("to"=> "[".$agentId .",".$userId."]","messages"=>$messages);
-				$line->Multicast_Message($arrPushData);
-				//$line->Push_Message($arrPushData);
+				$arrPushData("to"=> $userId,"messages"=>$messages);
+				//$line->Multicast_Message($arrPushData);
+				$line->Push_Message($arrPushData);
 				
 				$cdr = array(
 						"linedate"		=> $date_time,
