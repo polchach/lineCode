@@ -203,15 +203,18 @@ else {
 						"event" 	=> $event,
 						"message"	=> $messages
 					);
+				$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
+				$response = $line->SrcDstId($data);
+				$userid = $response['userid'];
+				$agentid = $response['agentid'];
+				
 				if($roomId == ''){
 					
-					if($type=='A'){
-						$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
-						$response = $line->SrcDstId($data);
-						$arrPushData = array("to"=>$response['userid'],"messages"=>$messages);
+					if($type=='A'){						
+						$arrPushData = array("to"=>$userid,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}else {
-						$arrPushData = array("to"=>$agentId,"messages"=>$messages);
+						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}
 				}
@@ -224,8 +227,8 @@ else {
 						"roomid"		=> $roomId,
 						"groupid"		=> $groupId,
 						"mtype"			=> $type,
-						"src" 			=> $userId,
-						"dst" 			=> $agentId,
+						"src" 			=> $userid,
+						"dst" 			=> $agentid,
 						"mtext"			=> $mtext
 					);
 
