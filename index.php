@@ -113,7 +113,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"	=> "text",
 										"text"	=> $arrJson['events'][0]['message']['text']
 									);
@@ -127,7 +127,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"					=> "image",
 										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
@@ -139,7 +139,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"					=> "video",
 										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
@@ -151,7 +151,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"					=> "audio",
 										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
 										"duration"				=> $arrJson['events'][0]['message']['duration']
@@ -163,7 +163,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"		=> "file",
 										"fileName"	=> $arrJson['events'][0]['message']['fileName'],
 										"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
@@ -175,7 +175,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"	=> "location",
 										"title"	=> "ส่งพิกัด โดยคุณ ".$name,
 										"address"	=> $arrJson['events'][0]['message']['address'],
@@ -191,7 +191,7 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					$messages = array(
+					$messages[] = array(
 										"type"		=> "sticker",
 										"packageId"	=> $arrJson['events'][0]['message']['packageId'],
 										"stickerId" => $arrJson['events'][0]['message']['stickerId']
