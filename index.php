@@ -193,8 +193,8 @@ else {
 									);
 					$messages[] = array(
 										"type"		=> "sticker",
-										"packageId"	=> $arrJson['events'][0]['message']['packageId'],
-										"stickerId" => $arrJson['events'][0]['message']['stickerId']
+										"packageId"	=> 4, //$arrJson['events'][0]['message']['packageId'],
+										"stickerId" => 238 //$arrJson['events'][0]['message']['stickerId']
 									);
 					
 				  break;
@@ -206,14 +206,12 @@ else {
 				$agentid = $response['agentid'];
 				
 				if(strlen($roomId) < 10){
-					$arrPostData['messages'][0]['type'] = "sticker";
-					$arrPostData['messages'][0]['packageId'] = 4;
-					$arrPostData['messages'][0]['stickerId'] = 238;
+					
 					if($type=='A'){						
-						$arrPushData = array("to"=>$userid,$arrPostData);
+						$arrPushData = array("to"=>$userid,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}else {
-						$arrPushData = array("to"=>$agentid,$arrPostData);
+						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}
 				}
