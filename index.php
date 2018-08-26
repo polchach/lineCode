@@ -206,8 +206,8 @@ else {
 				if($roomId == ''){
 					
 					if($type=='A'){
-						$arrPostData = array("uniqueid" => $uniqueid,"userid"=>$userId);
-						$response = $line->SrcDstId($arrPostData);
+						$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
+						$response = $line->SrcDstId($data);
 						$arrPushData = array("to"=>$response['userid'],"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}else {
