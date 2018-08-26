@@ -207,7 +207,7 @@ else {
 					
 					if($type=='A'){
 						$arrPostData = array("uniqueid" => $uniqueid,"userid"=>$userId);
-						$response = line->SrcDstId($arrPostData);
+						$response = $line->SrcDstId($arrPostData);
 						$arrPushData = array("to"=>$response['userid'],"messages"=>$messages);
 						$line->Push_Message($arrPushData);
 					}else {
