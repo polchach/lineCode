@@ -221,9 +221,6 @@ else {
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
 			$arrPostData['messages'][0]['type'] = "sticker";
-			$arrPostData['messages'][0]['packageId'] = 1;
-			$arrPostData['messages'][0]['stickerId'] = 1;
-			$arrPostData['messages'][0]['type'] = "sticker";
 			$arrPostData['messages'][0]['packageId'] = 4;
 			$arrPostData['messages'][0]['stickerId'] = 238;
 		
