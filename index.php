@@ -193,9 +193,9 @@ else {
 									);
 					$packageId = $arrJson['events'][0]['message']['packageId'];
 					$stickerId = $arrJson['events'][0]['message']['stickerId'];
-					if($packageId == ''){
-						$packageId = 4;
-						$stickerId = 235;
+					if(strlen($packageId) == 0){
+						$packageId = '4';
+						$stickerId = '235';
 					}
 					$messages[] = array(
 										"type"		=> "sticker",
