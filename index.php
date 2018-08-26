@@ -203,8 +203,7 @@ else {
 						"event" 	=> $event,
 						"message"	=> $messages
 					);
-				//$to = "[".$agentId .",".$userId."]";
-				$arrPushData("to"=> $userId,"messages"=>$messages);
+				$arrPushData = array("to"=>$userId,"messages"=>$messages);
 				//$line->Multicast_Message($arrPushData);
 				$line->Push_Message($arrPushData);
 				
@@ -222,7 +221,7 @@ else {
 					
 					
 					
-					
+
 				$line -> mdr($cdr);
 
 		}else{
