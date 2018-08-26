@@ -208,7 +208,7 @@ else {
 				$userid = $response['userid'];
 				$agentid = $response['agentid'];
 				
-				if($roomId == ''){
+				if(strlen($roomId) == 0){
 					
 					if($type=='A'){						
 						$arrPushData = array("to"=>$userid,"messages"=>$messages);
