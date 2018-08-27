@@ -333,10 +333,50 @@ class lineAPI {
 		$this->pushToDB($arrPostData);
 		
 		return $arrPostData['agents']['displayName'];
-	}
+}
 	
 	// Rich Menu
-	
+function Greeting_MENU($replyToken){
+		$defaultAction  = array(
+				"type" 					=> "uri",
+				"label"					=> "ข้อมูลทาง บริษัทเรา",
+				"uri" 					=> "https://www.tot.co.th"
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "คุยกับ คุณชบา คลิกเลยค่ะ",
+				"data" 					=> "action=chabar&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "คุยกับ พนักงาน คลิกค่ะ",
+				"data" 					=> "action=agent&userid=".$userId
+			);
+		$template  = array(
+				"type" 					=> "buttons",
+				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
+				"imageAspectRatio" 		=> "rectangle",
+				"templateimageSize" 	=> "cover",
+				"imageBackgroundColor" 	=> "#BFDFFF",
+				"title" 				=> "บริษัท LinkPBX จำกัด ",
+				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ",
+				"defaultAction" 		=> $defaultAction,
+				"actions" 				=> $Actions
+			);
+		$messages[] = array(
+							"type"					=> "text",
+							"text"					=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ"
+							
+				);
+		$messages[] = array(
+							"type"					=> "template",
+							"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
+							"template"				=> $template
+							
+				);
+		$reply = array("replyToken" => $replyToken,"messages" => $messages);
+		return $reply;
+}	
 function createNewRichmenu($channelAccessToken) {
   $sh = <<< EOF
   curl -X POST \

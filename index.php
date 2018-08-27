@@ -86,103 +86,15 @@ else {
 		}
 		else{
 			
-/*{
-  "type": "template",
-  "altText": "This is a buttons template",
-  "template": {
-      "type": "buttons",
-      "thumbnailImageUrl": "http://thailandsmartai.com/GW/asset/mini.jpg",
-      "imageAspectRatio": "rectangle",
-      "imageSize": "cover",
-      "imageBackgroundColor": "#FFFFFF",
-      "title": "Menu",
-      "text": "Please select",
-      "defaultAction": {
-          "type": "uri",
-          "label": "View detail",
-          "uri": "https://www.tot.co.th"
-      },
-      "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "data": "action=buy&itemid=123"
-          },
-          {
-            "type": "postback",
-            "label": "Add to cart",
-            "data": "action=add&itemid=123"
-          },
-          {
-            "type": "uri",
-            "label": "View detail",
-            "uri": "https://www.tot.co.th"
-          }
-      ]
-  }
-}*/
-$defaultAction  = array(
-		"type" 					=> "uri",
-		"label"					=> "ข้อมูลทาง บริษัทเรา",
-		"uri" 					=> "https://www.tot.co.th"
-	);
-$Actions[]  = array(
-		"type" 					=> "postback",
-		"label"					=> "คุยกับ คุณ ชบา",
-		"data" 					=> "action=chabar&userid=".$userId
-	);
-$Actions[]  = array(
-		"type" 					=> "postback",
-		"label"					=> "คุยกับ พนักงาน",
-		"data" 					=> "action=agent&userid=".$userId
-	);
-$template  = array(
-		"type" 					=> "buttons",
-		"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
-		"imageAspectRatio" 		=> "rectangle",
-		"templateimageSize" 	=> "cover",
-		"imageBackgroundColor" 	=> "#BFDFFF",
-		"title" 				=> "รายการ",
-		"text" 					=> "เลือกรายการเลยค่ะ",
-		"defaultAction" 		=> $defaultAction,
-		"actions" 				=> $Actions
-	);
-$messages[] = array(
-					"type"					=> "text",
-					"text"					=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ"
-					
-		);
-$messages[] = array(
-					"type"					=> "template",
-					"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
-					"template"				=> $template
-					
-		);
-$reply = array("replyToken" => $arrJson['events'][0]['replyToken'],"messages" => $messages);
-/*			$arrPostData['messages'][0]['type'] = "template";
-			$arrPostData['messages'][0]['altText'] = "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ";
-			$arrPostData['messages'][0]['template']['type'] = "buttons";
-			$arrPostData['messages'][0]['template']['thumbnailImageUrl'] = "http://thailandsmartai.com/GW/asset/mini.jpg";
-			$arrPostData['messages'][0]['template']['imageAspectRatio'] = "rectangle";
-			$arrPostData['messages'][0]['template']['templateimageSize'] = "cover";
-			$arrPostData['messages'][0]['template']['imageBackgroundColor'] = "#FFFFFF";
-			$arrPostData['messages'][0]['template']['title'] = "เมนู";
-			$arrPostData['messages'][0]['template']['text'] = "กรุณาเลือกทำรายการ";
-			$arrPostData['messages'][0]['template']['defaultAction']['type'] = "uri";
-			$arrPostData['messages'][0]['template']['defaultAction']['label'] = "ข้อมูลทางเรา";
-			$arrPostData['messages'][0]['template']['defaultAction']['uri'] = "https://www.tot.co.th";
-			$arrPostData['messages'][0]['template']['actions'][0]['type'] = "postback";
-			$arrPostData['messages'][0]['template']['actions'][0]['label'] = "คุยกับชบา";
-			$arrPostData['messages'][0]['template']['actions'][0]['data'] = "action=chabar&userid=".$userId;
-			$arrPostData['messages'][0]['template']['actions'][1]['type'] = "postback";
-			$arrPostData['messages'][0]['template']['actions'][1]['label'] = "ติดต่อพนักงาน";
-			$arrPostData['messages'][0]['template']['actions'][1]['data'] = "action=agent&userid=".$userId;*/
 
-//$line->Reply_Message($messages);
+
+$reply = line->Greeting_MENU($arrJson['events'][0]['replyToken']);
+$line->Reply_Message($reply);
+
 //$arrPushData = array("to"=>$userId,"messages"=>$messages);
 						//$line->Push_Message($arrPushData);
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
-$line->Reply_Message($reply);
+
 		$acd = array("cmd" => "ACD","userid"=>$userId);
 		$r = $line->ACD($acd);
 		$agentId = $r['agentid'];
