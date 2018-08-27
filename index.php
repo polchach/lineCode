@@ -17,9 +17,10 @@ $messageId 	= $arrJson['events'][0]['message']['id'];
 $roomId 	= $arrJson['events'][0]['source']['roomId'];
 $groupId 	= $arrJson['events'][0]['source']['groupId'];
 $array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
+$name = $line -> createAgentProfile($userId,$role);
 if(sizeof($array_message)==2){
 	$role = '';
-	$name = $line -> createAgentProfile($userId,$role);
+	
 	switch($array_message[1]){
 		case 'new':
 		if($name==''){
@@ -151,12 +152,12 @@ $messages[] = array(
 					"text"					=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ"
 					
 		);
-/*$messages[] = array(
+$messages[] = array(
 					"type"					=> "template",
 					"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
 					"template"				=> $template
 					
-		);*/
+		);
 $reply = array("replyToken" => $arrJson['events'][0]['replyToken'],"messages" => $messages);
 /*			$arrPostData['messages'][0]['type'] = "template";
 			$arrPostData['messages'][0]['altText'] = "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ";
