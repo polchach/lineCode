@@ -120,7 +120,39 @@ else {
       ]
   }
 }*/
-			$arrPostData['messages'][0]['type'] = "template";
+$defaultAction  = array(
+		"type" 					=> "uri",
+		"label"					=> "ข้อมูลทาง บริษัทเรา",
+		"uri" 					=> "https://www.tot.co.th"
+	);
+$Actions[]  = array(
+		"type" 					=> "postback",
+		"label"					=> "คุยกับคุณ ชบา",
+		"data" 					=> "action=chabar&userid=".$userId
+	);
+$Actions[]  = array(
+		"type" 					=> "postback",
+		"label"					=> "คุยกับ พนักงาน",
+		"data" 					=> "action=agent&userid=".$userId
+	);
+$template  = array(
+		"type" 					=> "buttons",
+		"thumbnailImageUrl"		=> "http://thailandsmartai.com/GW/asset/mini.jpg",
+		"imageAspectRatio" 		=> "rectangle",
+		"templateimageSize" 	=> "cover",
+		"imageBackgroundColor" 	=> "#FFFFFF",
+		"title" 				=> "รายการ",
+		"text" 					=> "เลือกรายการเลยค่ะ",
+		"defaultAction" 		=> $defaultAction,
+		"actions" 				=> $Actions
+	);
+$messages[] = array(
+					"type"					=> "template",
+					"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
+					"template"				=> $template
+					
+		);
+/*			$arrPostData['messages'][0]['type'] = "template";
 			$arrPostData['messages'][0]['altText'] = "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ";
 			$arrPostData['messages'][0]['template']['type'] = "buttons";
 			$arrPostData['messages'][0]['template']['thumbnailImageUrl'] = "http://thailandsmartai.com/GW/asset/mini.jpg";
@@ -137,10 +169,10 @@ else {
 			$arrPostData['messages'][0]['template']['actions'][0]['data'] = "action=chabar&userid=".$userId;
 			$arrPostData['messages'][0]['template']['actions'][1]['type'] = "postback";
 			$arrPostData['messages'][0]['template']['actions'][1]['label'] = "ติดต่อพนักงาน";
-			$arrPostData['messages'][0]['template']['actions'][1]['data'] = "action=agent&userid=".$userId;
-//$line->Reply_Message($arrPostData);
-$arrPushData = array("to"=>$userId,"messages"=>$arrPostData);
-						$line->Push_Message($arrPushData);
+			$arrPostData['messages'][0]['template']['actions'][1]['data'] = "action=agent&userid=".$userId;*/
+$line->Reply_Message($messages);
+//$arrPushData = array("to"=>$userId,"messages"=>$messages);
+//						$line->Push_Message($arrPushData);
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
 
 		$acd = array("cmd" => "ACD","userid"=>$userId);
