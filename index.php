@@ -127,6 +127,12 @@ else {
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
+					/*{
+  "type": "image",
+  "originalContentUrl": "PROVIDE_URL_FROM_YOUR_SERVER",
+  "previewImageUrl": "PROVIDE_URL_FROM_YOUR_SERVER",
+  "animated": false
+}*/
 					$messages[] = array(
 										"type"					=> "image",
 										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
@@ -195,8 +201,13 @@ else {
 					$stickerId = $arrJson['events'][0]['message']['stickerId'];
 					
 					$messages[] = array(
-										"type"		=> "text",
-										"text"	=> "Pack : ".$packageId ." Sticker : ".$stickerId
+										"type"	=> "text",
+										"text"	=> "Package : ".$packageId ."\nSticker : ".$stickerId
+									);
+					$messages[] = array(
+										"type"	=> "sticker",
+										"packageId"	=> $packageId,
+										"stickerId"	=> $packageId
 									);
 					
 				  break;
@@ -240,8 +251,8 @@ else {
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
 			$arrPostData['messages'][0]['type'] = "sticker";
-			$arrPostData['messages'][0]['packageId'] = 4;
-			$arrPostData['messages'][0]['stickerId'] = 238;
+			$arrPostData['messages'][0]['packageId'] = 1;
+			$arrPostData['messages'][0]['stickerId'] = 5;
 		
 			$line->Reply_Message($arrPostData);
 		}
