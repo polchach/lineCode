@@ -88,7 +88,7 @@ else {
 			
 
 
-$reply = line->Greeting_MENU($arrJson['events'][0]['replyToken']);
+$reply = line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 $line->Reply_Message($reply);
 
 //$arrPushData = array("to"=>$userId,"messages"=>$messages);

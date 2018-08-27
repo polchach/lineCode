@@ -336,7 +336,7 @@ class lineAPI {
 }
 	
 	// Rich Menu
-function Greeting_MENU($replyToken){
+function Greeting_MENU($replyToken,$userId,$name){
 		$defaultAction  = array(
 				"type" 					=> "uri",
 				"label"					=> "ข้อมูลทาง บริษัทเรา",
