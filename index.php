@@ -90,7 +90,7 @@ else {
   "altText": "This is a buttons template",
   "template": {
       "type": "buttons",
-      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "thumbnailImageUrl": "http://thailandsmartai.com/GW/asset/mini.jpg",
       "imageAspectRatio": "rectangle",
       "imageSize": "cover",
       "imageBackgroundColor": "#FFFFFF",
@@ -99,7 +99,7 @@ else {
       "defaultAction": {
           "type": "uri",
           "label": "View detail",
-          "uri": "http://example.com/page/123"
+          "uri": "https://www.tot.co.th"
       },
       "actions": [
           {
@@ -115,7 +115,7 @@ else {
           {
             "type": "uri",
             "label": "View detail",
-            "uri": "http://example.com/page/123"
+            "uri": "https://www.tot.co.th"
           }
       ]
   }
@@ -127,7 +127,7 @@ $defaultAction  = array(
 	);
 $Actions[]  = array(
 		"type" 					=> "postback",
-		"label"					=> "คุยกับคุณ ชบา",
+		"label"					=> "คุยกับ คุณ ชบา",
 		"data" 					=> "action=chabar&userid=".$userId
 	);
 $Actions[]  = array(
@@ -146,6 +146,11 @@ $template  = array(
 		"defaultAction" 		=> $defaultAction,
 		"actions" 				=> $Actions
 	);
+$messages[] = array(
+					"type"					=> "text",
+					"text"					=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ"
+					
+		);
 $messages[] = array(
 					"type"					=> "template",
 					"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
