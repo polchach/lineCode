@@ -123,7 +123,7 @@ else {
 			$arrPostData['messages'][0]['type'] = "template";
 			$arrPostData['messages'][0]['altText'] = "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ";
 			$arrPostData['messages'][0]['template']['type'] = "buttons";
-			$arrPostData['messages'][0]['template']['thumbnailImageUrl'] = "https://example.com/bot/images/image.jpg";
+			$arrPostData['messages'][0]['template']['thumbnailImageUrl'] = "https://www.google.co.th/search?biw=1242&bih=574&tbm=isch&sa=1&ei=4YyDW_maCYqo9QO-obmoDw&q=%E0%B9%80%E0%B8%8C%E0%B8%AD%E0%B9%81%E0%B8%95%E0%B8%A1&oq=%E0%B9%80%E0%B8%8C%E0%B8%AD%E0%B9%81%E0%B8%95%E0%B8%A1&gs_l=img.3..0l7j0i30k1l2j0i5i30k1.22667.27538.0.27749.8.7.0.1.1.0.320.976.0j4j0j1.5.0....0...1c.1.64.img..2.6.981.0..0i67k1j35i39k1j0i10k1.0.UixjUTQ5hFY";
 			$arrPostData['messages'][0]['template']['imageAspectRatio'] = "rectangle";
 			$arrPostData['messages'][0]['template']['templateimageSize'] = "cover";
 			$arrPostData['messages'][0]['template']['imageBackgroundColor'] = "#FFFFFF";
