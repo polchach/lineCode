@@ -175,9 +175,9 @@ $messages[] = array(
 			$arrPostData['messages'][0]['template']['actions'][1]['type'] = "postback";
 			$arrPostData['messages'][0]['template']['actions'][1]['label'] = "ติดต่อพนักงาน";
 			$arrPostData['messages'][0]['template']['actions'][1]['data'] = "action=agent&userid=".$userId;*/
-$line->Reply_Message($messages);
-//$arrPushData = array("to"=>$userId,"messages"=>$messages);
-//						$line->Push_Message($arrPushData);
+//$line->Reply_Message($messages);
+$arrPushData = array("to"=>$userId,"messages"=>$messages);
+						$line->Push_Message($arrPushData);
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
 
 		$acd = array("cmd" => "ACD","userid"=>$userId);
