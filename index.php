@@ -138,10 +138,10 @@ $Actions[]  = array(
 	);
 $template  = array(
 		"type" 					=> "buttons",
-		"thumbnailImageUrl"		=> "http://thailandsmartai.com/GW/asset/mini.jpg",
+		"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
 		"imageAspectRatio" 		=> "rectangle",
 		"templateimageSize" 	=> "cover",
-		"imageBackgroundColor" 	=> "#FFFFFF",
+		"imageBackgroundColor" 	=> "#BFDFFF",
 		"title" 				=> "รายการ",
 		"text" 					=> "เลือกรายการเลยค่ะ",
 		"defaultAction" 		=> $defaultAction,
