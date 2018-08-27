@@ -374,8 +374,8 @@ function Greeting_MENU($replyToken,$userId,$name){
 							"template"				=> $template
 							
 				);
-		$reply = array("replyToken" => $replyToken,"messages" => $messages);
-		return $reply;
+		$data = array("replyToken" => $replyToken,"messages" => $messages);
+		return $data;
 }	
 function createNewRichmenu($channelAccessToken) {
   $sh = <<< EOF
