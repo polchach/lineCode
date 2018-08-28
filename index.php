@@ -90,7 +90,7 @@ else {
 		$d = array("userid" => $userId);
 		$r = $line -> InitState($d);
 		if($r['uniqueid'] == '0'){
-			
+			$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 			$acd = array("cmd" => "ACD","userid"=>$userId);
 			$r = $line->ACD($acd);
 			$agentId = $r['agentid'];
@@ -104,7 +104,7 @@ else {
 					
 				}else{
 					$type = 'C';
-					$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+					
 				}
 				$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 				$rs = $line -> CoreState($data);
