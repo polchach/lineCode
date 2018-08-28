@@ -95,7 +95,7 @@ else {
 			$r = $line->ACD($acd);
 			$agentId = $r['agentid'];
 			if($agentId != "A"){
-				$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+				
 				$uID = array("userid" => $userId);
 				$res = $line -> AgentCheck($uID);
 				
@@ -104,7 +104,7 @@ else {
 					
 				}else{
 					$type = 'C';
-					
+					$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 				}
 				$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
 				$rs = $line -> CoreState($data);
