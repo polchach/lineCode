@@ -138,6 +138,17 @@ class lineAPI {
 		return json_decode($result,true);
 
 	}
+	function InitState($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/initstate.json/?data=".base64_encode(json_encode($arrPostData));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+
+	}
 	function CoreState($arrPostData){
 		$strUrl = "http://www.thailandsmartai.com/GW/corestate.json/?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
@@ -351,6 +362,31 @@ function Greeting_MENU($replyToken,$userId,$name){
 				"type" 					=> "postback",
 				"label"					=> "คุยกับ พนักงาน คลิกค่ะ",
 				"data" 					=> "action=agent&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "AIS Call 0905239695",
+				"data" 					=> "action=ais&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "DTAC Call 0905239695",
+				"data" 					=> "action=dtac&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "TRUE Call 0905239695",
+				"data" 					=> "action=true&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "CAT Call 0905239695",
+				"data" 					=> "action=cat&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "TOT Call 0905239695",
+				"data" 					=> "action=tot&userid=".$userId
 			);
 		$template  = array(
 				"type" 					=> "buttons",
