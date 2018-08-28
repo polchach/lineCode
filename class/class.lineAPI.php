@@ -428,8 +428,8 @@ function MAIN_MENU($replyToken,$userId,$name){
 			);
 		
 		$Actions[]  = array(
-				"type" 					=> "text",
-				"label"					=> "โทรศัพท์ 0905239695",
+				"type" 					=> "message",
+				"label"					=> "AIS Call 0905239695",
 				"text" 					=> "0905239695"
 			);
 		$template  = array(
