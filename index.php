@@ -91,6 +91,24 @@ else {
 		$r = $line -> InitState($d);
 		if($r['uniqueid'] == '0'){
 			$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+			$acd = array("cmd" => "ACD","userid"=>$userId);
+			$r = $line->ACD($acd);
+			$agentId = $r['agentid'];
+			if($agentId != "A"){
+				$uID = array("userid" => $userId);
+				$res = $line -> AgentCheck($uID);
+				
+				if($res['result']== '1'){
+					$type = 'A';
+					
+				}else{
+					$type = 'C';
+					
+				}
+				$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+				$rs = $line -> CoreState($data);
+				$uniqueid = $rs['uniqueid'];
+			}
 		}else{
 
 			$acd = array("cmd" => "ACD","userid"=>$userId);
