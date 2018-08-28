@@ -348,21 +348,7 @@ class lineAPI {
 	
 	// Rich Menu
 function Greeting_MENU($replyToken,$userId,$name){
-		$defaultAction  = array(
-				"type" 					=> "uri",
-				"label"					=> "ข้อมูลทาง บริษัทเรา",
-				"uri" 					=> "https://www.tot.co.th"
-			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "คุยกับ คุณชบา คลิกเลยค่ะ",
-				"data" 					=> "action=chabar&userid=".$userId
-			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "คุยกับ พนักงาน คลิกค่ะ",
-				"data" 					=> "action=agent&userid=".$userId
-			);
+		
 		$Actions[]  = array(
 				"type" 					=> "postback",
 				"label"					=> "AIS Call 0905239695",
@@ -378,6 +364,48 @@ function Greeting_MENU($replyToken,$userId,$name){
 				"label"					=> "TRUE Call 0905239695",
 				"data" 					=> "action=true&userid=".$userId
 			);
+		$columns[]  = array(
+				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
+				"title" 				=> "บริษัท LinePBX จำกัด ",
+				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ"
+				"actions" 				=> $Actions
+			);
+		$template  = array(
+				"type" 					=> "carousel",
+				"actions"				=> "[]",
+				"columns"				=> $columns
+			);
+		$messages[] = array(
+							"type"					=> "text",
+							"text"					=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ"
+							
+				);
+		$messages[] = array(
+							"type"					=> "template",
+							"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
+							"template"				=> $template
+							
+				);
+		$data = array("replyToken" => $replyToken,"messages" => $messages);
+		$this->Reply_Message($data);
+}	
+function MENU_BUTTON($replyToken,$userId,$name){
+		$defaultAction  = array(
+				"type" 					=> "uri",
+				"label"					=> "ข้อมูลทาง บริษัทเรา",
+				"uri" 					=> "https://www.tot.co.th"
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "คุยกับ คุณชบา คลิกเลยค่ะ",
+				"data" 					=> "action=chabar&userid=".$userId
+			);
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "คุยกับ พนักงาน คลิกค่ะ",
+				"data" 					=> "action=agent&userid=".$userId
+			);
+		
 		
 		$template  = array(
 				"type" 					=> "buttons",
