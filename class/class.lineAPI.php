@@ -349,26 +349,47 @@ class lineAPI {
 	// Rich Menu
 function Greeting_MENU($replyToken,$userId,$name){
 		
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "AIS Call 0905239695",
-				"data" 					=> "action=ais&userid=".$userId
+		$Actions1[]  = array(
+				"type" 					=> "message",
+				"label"					=>  "คุยกับ คุณชบา คลิกเลยค่ะ",
+				"text" 					=>  "คุยกับ คุณชบา คลิกเลยค่ะ"
 			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "DTAC Call 0905239695",
-				"data" 					=> "action=dtac&userid=".$userId
+		$Actions1[]  = array(
+				"type" 					=> "message",
+				"label"					=> "คุยกับ พนักงาน คลิกค่ะ",
+				"text" 					=> "คุยกับ พนักงาน คลิกค่ะ"
 			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "TRUE Call 0905239695",
-				"data" 					=> "action=true&userid=".$userId
+		$Actions1[]  = array(
+				"type" 					=> "message",
+				"label"					=> "AIS Call",
+				"text" 					=> "0905239695"
 			);
 		$columns[]  = array(
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
 				"title" 				=> "บริษัท LinePBX จำกัด ",
 				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ"
-				"actions" 				=> $Actions
+				"actions" 				=> $Actions1
+			);
+		$Actions2[]  = array(
+				"type" 					=> "message",
+				"label"					=> "DTAC Call",
+				"text" 					=> "0905239695"
+			);
+		$Actions2[]  = array(
+				"type" 					=> "message",
+				"label"					=> "TRUE Call",
+				"text" 					=> "0905239695"
+			);
+		$Actions2[]  = array(
+				"type" 					=> "message",
+				"label"					=> "TOT Call",
+				"text" 					=> "0905239695"
+			);
+		$columns[]  = array(
+				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
+				"title" 				=> "บริษัท LinePBX จำกัด ",
+				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ"
+				"actions" 				=> $Actions2
 			);
 		$template  = array(
 				"type" 					=> "carousel",
