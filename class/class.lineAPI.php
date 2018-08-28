@@ -367,7 +367,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 		$columns[]  = array(
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
 				"title" 				=> "บริษัท LinePBX จำกัด ",
-				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ"
+				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ",
 				"actions" 				=> $Actions1
 			);
 		$Actions2[]  = array(
@@ -388,7 +388,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 		$columns[]  = array(
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
 				"title" 				=> "บริษัท LinePBX จำกัด ",
-				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ"
+				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ",
 				"actions" 				=> $Actions2
 			);
 		$template  = array(
