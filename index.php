@@ -90,11 +90,12 @@ else {
 		$d = array("userid" => $userId);
 		$r = $line -> InitState($d);
 		if($r['uniqueid'] == '0'){
-			$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+			
 			$acd = array("cmd" => "ACD","userid"=>$userId);
 			$r = $line->ACD($acd);
 			$agentId = $r['agentid'];
 			if($agentId != "A"){
+				$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 				$uID = array("userid" => $userId);
 				$res = $line -> AgentCheck($uID);
 				
