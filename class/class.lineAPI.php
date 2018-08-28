@@ -366,7 +366,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 			);
 		$columns[]  = array(
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
-				"title" 				=> "บริษัท LinePBX จำกัด ",
+				"title" 				=> "บริษัท linePBX จำกัด ",
 				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ",
 				"actions" 				=> $Actions1
 			);
@@ -428,9 +428,9 @@ function MAIN_MENU($replyToken,$userId,$name){
 			);
 		
 		$Actions[]  = array(
-				"type" 					=> "postback",
+				"type" 					=> "text",
 				"label"					=> "โทรศัพท์ 0905239695",
-				"data" 					=> "action=call&userid=".$userId
+				"text" 					=> "0905239695"
 			);
 		$template  = array(
 				"type" 					=> "buttons",
@@ -438,7 +438,7 @@ function MAIN_MENU($replyToken,$userId,$name){
 				"imageAspectRatio" 		=> "rectangle",
 				"templateimageSize" 	=> "cover",
 				"imageBackgroundColor" 	=> "#BFDFFF",
-				"title" 				=> "บริษัท LinkPBX จำกัด ",
+				"title" 				=> "บริษัท linePBX จำกัด ",
 				"text" 					=> "ดูรายละเอียดสินค้า คลิกเลยค่ะ",
 				"defaultAction" 		=> $defaultAction,
 				"actions" 				=> $Actions
