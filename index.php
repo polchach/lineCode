@@ -89,174 +89,173 @@ else {
 // Greeting info ...
 		$d = array("userid" => $userId);
 		$r = $line -> InitState($d);
-		if($r['uniqueid'] == '0')
-		$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
-
-		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
-
-		$acd = array("cmd" => "ACD","userid"=>$userId);
-		$r = $line->ACD($acd);
-		$agentId = $r['agentid'];
-		if($agentId != "A"){
-			$uID = array("userid" => $userId);
-			$res = $line -> AgentCheck($uID);
-			
-			if($res['result']== '1'){
-				$type = 'A';
-				
-			}else{
-				$type = 'C';
-				
-			}
-			$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
-			$rs = $line -> CoreState($data);
-			$uniqueid = $rs['uniqueid'];
-			
-				
-				
-				
-				switch($arrJson['events'][0]['message']['type']){
-				  case 'text':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$messages[] = array(
-										"type"	=> "text",
-										"text"	=> $arrJson['events'][0]['message']['text']
-									);
-					//ค้นหาข้อมูลใน ฐานข้อมูล google แล้วนำมาตอบกลับไป ถ้าเป็น AI
-					
-					
-				  break;
-				  
-				  case 'image':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					
-					$messages[] = array(
-										"type"					=> "image",
-										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
-									);
-				  break;
-				  
-				  case 'video':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$messages[] = array(
-										"type"					=> "video",
-										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-										"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
-									);
-				  break;
-				  
-				  case 'audio':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$messages[] = array(
-										"type"					=> "audio",
-										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
-										"duration"				=> $arrJson['events'][0]['message']['duration']
-									);
-				  break;
-				  
-				  case 'file':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$messages[] = array(
-										"type"		=> "file",
-										"fileName"	=> $arrJson['events'][0]['message']['fileName'],
-										"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
-									);
-				  break;
-				  
-				  case 'location':
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$messages[] = array(
-										"type"	=> "location",
-										"title"	=> "ส่งพิกัด โดยคุณ ".$name,
-										"address"	=> $arrJson['events'][0]['message']['address'],
-										"latitude"	=> $arrJson['events'][0]['message']['latitude'],
-										"longitude"	=> $arrJson['events'][0]['message']['longitude']
-									);
-				  break;
-				 
-				  
-				  case 'sticker':
-			
-					$event = array(
-										"type"		=> $type,
-										"senddate"	=> $date_time
-									);
-					$packageId = $arrJson['events'][0]['message']['packageId'];
-					$stickerId = $arrJson['events'][0]['message']['stickerId'];
-					
-					$messages[] = array(
-										"type"	=> "text",
-										"text"	=> "Package : ".$packageId ."\nSticker : ".$stickerId
-									);
-					$messages[] = array(
-										"type"	=> "sticker",
-										"packageId"	=> $packageId,
-										"stickerId"	=> $packageId
-									);
-					
-				  break;
-				}
-				
-				$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
-				$response = $line->SrcDstId($data);
-				$userid = $response['userid'];
-				$agentid = $response['agentid'];
-				
-				if(strlen($roomId) < 10){
-					
-					if($type=='A'){						
-						$arrPushData = array("to"=>$userid,"messages"=>$messages);
-						$line->Push_Message($arrPushData);
-					}else {
-						$arrPushData = array("to"=>$agentid,"messages"=>$messages);
-						$line->Push_Message($arrPushData);
-					}
-				}
-				
-				$mtext = array(
-						"event" 	=> $event,
-						"message"	=> $messages
-					);
-				$cdr = array(
-						"linedate"		=> $date_time,
-						"uniqueid"		=> $uniqueid,
-						"messageid"		=> $messageId,
-						"roomid"		=> $roomId,
-						"groupid"		=> $groupId,
-						"mtype"			=> $type,
-						"src" 			=> $userid,
-						"dst" 			=> $agentid,
-						"mtext"			=> $mtext
-					);
-
-				$line -> mdr($cdr);
-				unset($messages);
-		}else{
-			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
-			$line->Reply_Message($arrPostData);
+		if($r['uniqueid'] == '0'){
 			$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+		}else{
+
+			$acd = array("cmd" => "ACD","userid"=>$userId);
+			$r = $line->ACD($acd);
+			$agentId = $r['agentid'];
+			if($agentId != "A"){
+				$uID = array("userid" => $userId);
+				$res = $line -> AgentCheck($uID);
+				
+				if($res['result']== '1'){
+					$type = 'A';
+					
+				}else{
+					$type = 'C';
+					
+				}
+				$data = array("userid" => $userId,"agentid" => $agentId,"type"=>$type);
+				$rs = $line -> CoreState($data);
+				$uniqueid = $rs['uniqueid'];
+				
+					
+					
+					
+					switch($arrJson['events'][0]['message']['type']){
+					  case 'text':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$messages[] = array(
+											"type"	=> "text",
+											"text"	=> $arrJson['events'][0]['message']['text']
+										);
+						//ค้นหาข้อมูลใน ฐานข้อมูล google แล้วนำมาตอบกลับไป ถ้าเป็น AI
+						
+						
+					  break;
+					  
+					  case 'image':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						
+						$messages[] = array(
+											"type"					=> "image",
+											"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+											"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
+										);
+					  break;
+					  
+					  case 'video':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$messages[] = array(
+											"type"					=> "video",
+											"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+											"previewImageUrl"		=> $arrJson['events'][0]['message']['previewImageUrl']
+										);
+					  break;
+					  
+					  case 'audio':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$messages[] = array(
+											"type"					=> "audio",
+											"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
+											"duration"				=> $arrJson['events'][0]['message']['duration']
+										);
+					  break;
+					  
+					  case 'file':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$messages[] = array(
+											"type"		=> "file",
+											"fileName"	=> $arrJson['events'][0]['message']['fileName'],
+											"fileSize"	=> $arrJson['events'][0]['message']['fileSize']
+										);
+					  break;
+					  
+					  case 'location':
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$messages[] = array(
+											"type"	=> "location",
+											"title"	=> "ส่งพิกัด โดยคุณ ".$name,
+											"address"	=> $arrJson['events'][0]['message']['address'],
+											"latitude"	=> $arrJson['events'][0]['message']['latitude'],
+											"longitude"	=> $arrJson['events'][0]['message']['longitude']
+										);
+					  break;
+					 
+					  
+					  case 'sticker':
+				
+						$event = array(
+											"type"		=> $type,
+											"senddate"	=> $date_time
+										);
+						$packageId = $arrJson['events'][0]['message']['packageId'];
+						$stickerId = $arrJson['events'][0]['message']['stickerId'];
+						
+						$messages[] = array(
+											"type"	=> "text",
+											"text"	=> "Package : ".$packageId ."\nSticker : ".$stickerId
+										);
+						$messages[] = array(
+											"type"	=> "sticker",
+											"packageId"	=> $packageId,
+											"stickerId"	=> $packageId
+										);
+						
+					  break;
+					}
+					
+					$data = array("uniqueid" => $uniqueid,"userid"=>$userId);
+					$response = $line->SrcDstId($data);
+					$userid = $response['userid'];
+					$agentid = $response['agentid'];
+					
+					if(strlen($roomId) < 10){
+						
+						if($type=='A'){						
+							$arrPushData = array("to"=>$userid,"messages"=>$messages);
+							$line->Push_Message($arrPushData);
+						}else {
+							$arrPushData = array("to"=>$agentid,"messages"=>$messages);
+							$line->Push_Message($arrPushData);
+						}
+					}
+					
+					$mtext = array(
+							"event" 	=> $event,
+							"message"	=> $messages
+						);
+					$cdr = array(
+							"linedate"		=> $date_time,
+							"uniqueid"		=> $uniqueid,
+							"messageid"		=> $messageId,
+							"roomid"		=> $roomId,
+							"groupid"		=> $groupId,
+							"mtype"			=> $type,
+							"src" 			=> $userid,
+							"dst" 			=> $agentid,
+							"mtext"			=> $mtext
+						);
+
+					$line -> mdr($cdr);
+					unset($messages);
+			}else{
+				$arrPostData['messages'][0]['type'] = "text";
+				$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
+				$line->Reply_Message($arrPostData);
+				$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+			}
 		}
-		
 	}
 
 }

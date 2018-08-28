@@ -378,16 +378,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 				"label"					=> "TRUE Call 0905239695",
 				"data" 					=> "action=true&userid=".$userId
 			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "CAT Call 0905239695",
-				"data" 					=> "action=cat&userid=".$userId
-			);
-		$Actions[]  = array(
-				"type" 					=> "postback",
-				"label"					=> "TOT Call 0905239695",
-				"data" 					=> "action=tot&userid=".$userId
-			);
+		
 		$template  = array(
 				"type" 					=> "buttons",
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
