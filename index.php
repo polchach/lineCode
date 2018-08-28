@@ -86,12 +86,12 @@ else {
 		}
 		else{
 			
+// Greeting info ...
+		$d = array("userid" => $userId);
+		$r = $line -> InitState($d);
+		if($r['uniqueid'] == '0')
+		$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 
-
-$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
-
-//$arrPushData = array("to"=>$userId,"messages"=>$messages);
-						//$line->Push_Message($arrPushData);
 		//ตรวจสอบว่า เป็น agent หรือ ผู้ติดต่อ
 
 		$acd = array("cmd" => "ACD","userid"=>$userId);
@@ -135,12 +135,7 @@ $line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 										"type"		=> $type,
 										"senddate"	=> $date_time
 									);
-					/*{
-  "type": "image",
-  "originalContentUrl": "PROVIDE_URL_FROM_YOUR_SERVER",
-  "previewImageUrl": "PROVIDE_URL_FROM_YOUR_SERVER",
-  "animated": false
-}*/
+					
 					$messages[] = array(
 										"type"					=> "image",
 										"originalContentUrl"	=> $arrJson['events'][0]['message']['originalContentUrl'],
@@ -258,11 +253,8 @@ $line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 		}else{
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "คุณ " .$name. " คะ\nขณะนี้พนักงานไม่สามารถให้บริการท่านได้\nกรุณารอสักครู่ ท่านจะได้รับบริการโดยเร็วที่สุดค่ะ";
-			$arrPostData['messages'][0]['type'] = "sticker";
-			$arrPostData['messages'][0]['packageId'] = 1;
-			$arrPostData['messages'][0]['stickerId'] = 5;
-		
 			$line->Reply_Message($arrPostData);
+			$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 		}
 		
 	}
