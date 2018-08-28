@@ -410,7 +410,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 		$data = array("replyToken" => $replyToken,"messages" => $messages);
 		$this->Reply_Message($data);
 }	
-function MENU_BUTTON($replyToken,$userId,$name){
+function MAIN_MENU($replyToken,$userId,$name){
 		$defaultAction  = array(
 				"type" 					=> "uri",
 				"label"					=> "ข้อมูลทาง บริษัทเรา",
@@ -427,7 +427,11 @@ function MENU_BUTTON($replyToken,$userId,$name){
 				"data" 					=> "action=agent&userid=".$userId
 			);
 		
-		
+		$Actions[]  = array(
+				"type" 					=> "postback",
+				"label"					=> "โทรศัพท์ 0905239695",
+				"data" 					=> "action=call&userid=".$userId
+			);
 		$template  = array(
 				"type" 					=> "buttons",
 				"thumbnailImageUrl"		=> "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",

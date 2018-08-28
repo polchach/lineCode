@@ -90,7 +90,7 @@ else {
 		$d = array("userid" => $userId);
 		$r = $line -> InitState($d);
 		if($r['uniqueid'] == '0'){
-			$line->Greeting_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
+			$line->MAIN_MENU($arrJson['events'][0]['replyToken'],$userId,$name);
 		}else{
 
 			$acd = array("cmd" => "ACD","userid"=>$userId);
