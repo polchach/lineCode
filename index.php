@@ -17,9 +17,10 @@ $messageId 	= $arrJson['events'][0]['message']['id'];
 $roomId 	= $arrJson['events'][0]['source']['roomId'];
 $groupId 	= $arrJson['events'][0]['source']['groupId'];
 $array_message = explode('/',strtolower($arrJson['events'][0]['message']['text']));
-$name = $line -> createAgentProfile($userId,$role);
+
 if(sizeof($array_message)==2){
 	$role = '';
+	$name = $line -> createAgentProfile($userId,$role);
 	
 	switch($array_message[1]){
 		case 'new':
@@ -80,12 +81,13 @@ if(sizeof($array_message)==2){
 else {
 
 		$results = $line -> getUserProfile($userId);
+		
 		if($results['userId'] == ""){
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = "สวัสดีค่ะคุณยังไม่ได้เพิ่มทางเราเป็นเพื่อนค่ะ\nกรุณาเพิ่มเป็นเพื่อนก่อนนะคะ";
 		}
 		else{
-			
+		$name = $results['displayName'];
 // Greeting info ...
 		$d = array("userid" => $userId);
 		$r = $line -> InitState($d);
