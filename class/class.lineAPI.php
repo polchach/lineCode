@@ -477,7 +477,7 @@ function MAIN_MENU_X($replyToken,$userId,$name){
 		$this->Reply_Message($data);
 }
 function MAIN_MENU($replyToken,$userId,$name){	
-	$datajson = '[{
+	$datajson = '{
 	  "type": "bubble",
 	  "styles": {
 		"footer": {
@@ -596,8 +596,15 @@ function MAIN_MENU($replyToken,$userId,$name){
 		  }
 		]
 	  }
-	}]';
-	$data = array("replyToken" => $replyToken,"messages" => json_decode($datajson,true));
+	}';
+	$template = json_decode($datajson,true);
+	$messages[] = array(
+							"type"					=> "flex",
+							"altText"				=> "สวัสดีค่ะคุณ ".$name." ยินดีให้บริการค่ะ\nกรุณาเลือกทำรายการได้เลยคะ",
+							"contents"				=> $template
+							
+				);
+	$data = array("replyToken" => $replyToken,"messages" => $messages);
 	$this->Reply_Message($data);
 }
 function createNewRichmenu($channelAccessToken) {
