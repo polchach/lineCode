@@ -515,7 +515,7 @@ function MAIN_MENU($replyToken,$userId,$name){
 		"aspectMode": "cover",
 		"action": {
 		  "type": "uri",
-		  "uri": "http://bit.ly/2JGBRKv"
+		  "uri": "https://www.tot.co.th"
 		}
 	  },
 	  "body": {
@@ -574,7 +574,7 @@ function MAIN_MENU($replyToken,$userId,$name){
 			"action": {
 			  "type": "uri",
 			  "label": "อ่านต่อ...",
-			  "uri": "http://bit.ly/2JGBRKv"
+			  "uri": "https://www.tot.co.th"
 			}
 		  }
 		]
