@@ -429,7 +429,7 @@ function Greeting_MENU($replyToken,$userId,$name){
 		$data = array("replyToken" => $replyToken,"messages" => $messages);
 		$this->Reply_Message($data);
 }	
-function MAIN_MENU($replyToken,$userId,$name){
+function MAIN_MENU_X($replyToken,$userId,$name){
 		$defaultAction  = array(
 				"type" 					=> "uri",
 				"label"					=> "ข้อมูลทาง บริษัทเรา",
@@ -476,7 +476,7 @@ function MAIN_MENU($replyToken,$userId,$name){
 		$data = array("replyToken" => $replyToken,"messages" => $messages);
 		$this->Reply_Message($data);
 }
-function MAIN_MENU_X($replyToken,$userId,$name){	
+function MAIN_MENU($replyToken,$userId,$name){	
 	$datajson = '{
 	  "type": "bubble",
 	  "styles": {
