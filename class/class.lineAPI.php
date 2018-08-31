@@ -14,7 +14,24 @@ class lineAPI {
 		$this->apiUrl_reply 	= "https://api.line.me/v2/bot/message/reply";
 		$this->apiUrl_profile 	= "https://api.line.me/v2/bot/profile";
 	}
-
+	function Reply_Menu($arrPostData){
+		$strUrl = $this->apiUrl_reply;
+ 
+		$arrHeader = array();
+		$arrHeader[] = "Content-Type: application/json";
+		$arrHeader[] = "Authorization: Bearer {$this->accToken}";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$strUrl);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($ch);
+		curl_close ($ch);
+		return json_decode($result,true);
+	}
 	function Reply_Message($arrPostData){
 		$strUrl = $this->apiUrl_reply;
  
@@ -580,7 +597,8 @@ function MAIN_MENU($replyToken,$userId,$name){
 		]
 	  }
 	}';
-	return $datajson;
+	$data = array("replyToken" => $replyToken,"messages" => json_decode($datajson,true));
+	$this->Reply_Message($data);
 }
 function createNewRichmenu($channelAccessToken) {
   $sh = <<< EOF
